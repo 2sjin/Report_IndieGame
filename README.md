@@ -1,5 +1,10 @@
 # UnityMiniGames
-인디게임창업(자율교양) - Unity 미니게임 구현 실습 과제
+Unity 미니게임 구현 실습 과제
+
+| 강의 교재 |
+| :-: |
+| ![](https://bookthumb-phinf.pstatic.net/cover/118/854/11885460.jpg?type=m140&udate=20210731) |
+| [유니티 5 교과서, 기타무라 마나미, 길벗, 2017](https://book.naver.com/bookdb/book_detail.nhn?bid=11885460) |
 
 ---
 
