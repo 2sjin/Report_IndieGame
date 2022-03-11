@@ -6,6 +6,7 @@ C# 스크립트와 Unity 엔진을 이용한 미니게임 구현 실습 과제 �
 | :-: |
 | ![](https://bookthumb-phinf.pstatic.net/cover/118/854/11885460.jpg?type=m140&udate=20210731) |
 | [유니티 5 교과서, 기타무라 마나미, 길벗, 2017](https://book.naver.com/bookdb/book_detail.nhn?bid=11885460) |
+| [(길벗 GitHub 저장소 바로가기)](https://github.com/gilbutITbook/006922) |
 
 ---
 
