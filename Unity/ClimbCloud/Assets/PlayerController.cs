@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour {
+    Rigidbody2D rigid2D;
+    float jumpForce = 680.0f;
+    float walkForce = 3.0f;
+    float maxWalkSpeed = 2.0f;
+    
+    void Start() {
+        this.rigid2D = GetComponent<Rigidbody2D>();
+    }
+
+    void Update() {
+        // 점프
+        if (Input.GetKeyDown(KeyCode.Space))
+            this.rigid2D.AddForce(transform.up * this.jumpForce);
+
+        // 좌우 이동을 위한 방향 값 저장
+        int key = 0;
+        if (Input.GetKey(KeyCode.LeftArrow))
+            key = -1;
+
+        if (Input.GetKey(KeyCode.RightArrow))
+            key = 1;
+
+        // 현재 플레이어 속도 계산
+        float speedx = Mathf.Abs(this.rigid2D.velocity.x);
+
+        // 좌우 이동(스피드 제한)
+        if (speedx < this.maxWalkSpeed) {                                   // 최고 속도 미만이면
+            this.rigid2D.AddForce(transform.right * key * this.walkForce);  // 입력한 방향으로 힘을 준다
+        }
+
+        // 움직이는 방향에 따라 이미지 반전
+        if (key != 0) {
+            transform.localScale = new Vector3(key, 1, 1);
+        }
+    }
+}
