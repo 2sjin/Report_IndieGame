@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour {
     Rigidbody2D rigid2D;
     Animator animator;
-    float jumpForce = 680.0f;
-    float walkForce = 30.0f;
-    float maxWalkSpeed = 2.0f;
+    public float jumpForce = 680.0f;
+    public float walkForce = 30.0f;
+    public float maxWalkSpeed = 2.0f;
     
     void Start() {
         this.rigid2D = GetComponent<Rigidbody2D>();
@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         // 점프
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && this.rigid2D.velocity.y == 0) {  // Y 방향의 속도가 0일 때(정지 중일 때)만 점프
             this.rigid2D.AddForce(transform.up * this.jumpForce);
+        }
 
         // 좌우 이동을 위한 방향 값 저장
         int key = 0;
@@ -43,6 +44,10 @@ public class PlayerController : MonoBehaviour {
 
         // 플레이어의 속도에 따라 애니메이션 속도 적용
         this.animator.speed = speedx / 2.0f;
+
+        // 플레이어가 화면 밖으로 이탈하면 처음 위치로
+        if (transform.position.y < -7)
+            SceneManager.LoadScene("GameScene");
     }
 
     // 플레이어가 깃발에 닿았을 때 호출되는 함수
