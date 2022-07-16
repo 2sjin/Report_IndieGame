@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     Rigidbody2D rigid2D;
@@ -42,5 +43,11 @@ public class PlayerController : MonoBehaviour {
 
         // 플레이어의 속도에 따라 애니메이션 속도 적용
         this.animator.speed = speedx / 2.0f;
+    }
+
+    // 플레이어가 깃발에 닿았을 때 호출되는 함수
+    void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("Clear!");
+        SceneManager.LoadScene("ClearScene");
     }
 }
