@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         // 점프
         if (Input.GetKeyDown(KeyCode.Space) && this.rigid2D.velocity.y == 0) {  // Y 방향의 속도가 0일 때(정지 중일 때)만 점프
+            this.animator.SetTrigger("JumpTrigger");    // 트리거에 의해 점프 애니메이션이 재생됨
             this.rigid2D.AddForce(transform.up * this.jumpForce);
         }
 
@@ -43,7 +44,10 @@ public class PlayerController : MonoBehaviour {
         }
 
         // 플레이어의 속도에 따라 애니메이션 속도 적용
-        this.animator.speed = speedx / 2.0f;
+        if (this.rigid2D.velocity.y == 0)
+            this.animator.speed = speedx / 2.0f;
+        else
+            this.animator.speed = 1.0f;
 
         // 플레이어가 화면 밖으로 이탈하면 처음 위치로
         if (transform.position.y < -7)
